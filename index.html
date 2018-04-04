@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      body{
+        margin: 0;
+        padding: 0;
+      }
+      header{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+      }
+      header.hide{
+        grid-template-columns: 0fr;
+      }
+      nav{
+        background-color: black;
+        min-height: 100vh;
+      }
+      button{
+        position: absolute;
+        top:20px;
+        left:20px;
+      }
+      @media (max-width: 1366px) {
+        header{
+          grid-template-columns: repeat(3,1fr);
+        }
+      }
+      @media (max-width: 780px) {
+        header{
+          grid-template-columns: 0fr;
+        }
+        header.show{
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <script type="text/javascript">
+      function toggleMenu() {
+        var element = document.querySelector('header');
+        var style = window.getComputedStyle(element);
+        var grid = style.getPropertyValue('grid-template-columns');
+        if(grid.length > 3) {
+          element.classList.add("hide")
+          element.classList.remove("show");
+        }else {
+          element.classList.add('show')
+          element.classList.remove("hide");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <button type="button" name="button" onclick="toggleMenu()">Menu</button>
+      <nav></nav>
+    </header>
+  </body>
+</html>
